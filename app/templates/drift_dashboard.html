@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoramento de Drift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            background: #fff;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #333;
+            color: #fff;
+        }
+        .ok {
+            background-color: #c8e6c9;
+        }
+        .warn {
+            background-color: #fff9c4;
+        }
+        .danger {
+            background-color: #ffcdd2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📊 Painel de Monitoramento de Drift</h1>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>PSI</th>
+        <th>Status</th>
+    </tr>
+
+    {% for feature, data in drift.items() %}
+    <tr class="
+        {% if data.status == 'Sem drift' %}ok
+        {% elif data.status == 'Drift moderado' %}warn
+        {% else %}danger{% endif %}
+    ">
+        <td>{{ feature }}</td>
+        <td>{{ data.psi }}</td>
+        <td>{{ data.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Datathon - Monitoramento de Defasagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 30px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-left: 5px solid #333;
+            margin: 20px 0;
+        }
+        a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📘 Datathon – Monitoramento de Risco de Defasagem</h1>
+
+    <p>
+        Este projeto foi desenvolvido no contexto do <strong>Datathon Passos Mágicos</strong>,
+        com o objetivo de aplicar técnicas de <strong>Machine Learning</strong> para identificar
+        alunos com risco de defasagem educacional.
+    </p>
+
+    <h2>🎯 Objetivo</h2>
+    <p>
+        O objetivo principal é prever se um aluno apresenta ou não risco de defasagem,
+        com base em indicadores educacionais e desempenho acadêmico, permitindo
+        intervenções pedagógicas mais assertivas.
+    </p>
+
+    <h2>⚙️ Como a solução funciona</h2>
+    <ul>
+        <li>Os dados históricos (PEDE 2022, 2023 e 2024) são utilizados para treinamento do modelo.</li>
+        <li>O problema é tratado como uma <strong>classificação binária</strong>.</li>
+        <li>
+            A saída do modelo indica:
+            <ul>
+                <li><strong>0</strong> – Aluno não possui risco de defasagem</li>
+                <li><strong>1</strong> – Aluno possui risco de defasagem</li>
+            </ul>
+        </li>
+        <li>O modelo retorna também a <strong>probabilidade associada à previsão</strong>.</li>
+    </ul>
+
+    <h2>🔍 Monitoramento</h2>
+    <p>
+        O projeto inclui um mecanismo de <strong>monitoramento de drift</strong>, que compara
+        a distribuição dos dados de produção com os dados históricos de treinamento,
+        utilizando o índice PSI (Population Stability Index).
+    </p>
+
+    <div class="box">
+        👉 Acesse o painel de monitoramento de drift:<br>
+        <a href="/monitoring/dashboard">/monitoring/dashboard</a>
+    </div>
+
+    <h2>📡 Endpoints disponíveis</h2>
+    <ul>
+        <li><strong>POST /predict</strong> – Realiza a predição de risco de defasagem</li>
+        <li><strong>GET /monitoring/predictions</strong> – Consulta logs de predições</li>
+        <li><strong>GET /monitoring/drift</strong> – Retorna métricas de drift</li>
+        <li><strong>GET /monitoring/dashboard</strong> – Painel visual de drift</li>
+    </ul>
+
+    <footer>
+        Projeto desenvolvido para fins educacionais e analíticos.<br>
+        Datathon Passos Mágicos – Machine Learning & MLOps.
+    </footer>
+
+</div>
+
+</body>
+</html>
