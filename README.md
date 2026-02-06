@@ -1,5 +1,5 @@
 # 📘 Datathon Passos Mágicos – Monitoramento de Risco de Defasagem Educacional
-📌 Visão Geral
+## 📌 Visão Geral
 
 Este projeto foi desenvolvido no contexto do Datathon Passos Mágicos, com o objetivo de aplicar técnicas de Machine Learning para identificar alunos com risco de defasagem educacional, a partir de indicadores acadêmicos e pedagógicos.
 
@@ -17,7 +17,7 @@ Painel visual
 
 Containerização com Docker
 
-# 🎯 Objetivo do Projeto
+## 🎯 Objetivo do Projeto
 
 Construir um sistema capaz de:
 
@@ -31,7 +31,7 @@ Monitorar a estabilidade dos dados ao longo do tempo
 
 Detectar mudanças de distribuição (drift) nos dados de produção
 
-# 🧠 Definição do Problema
+## 🧠 Definição do Problema
 
 O problema foi tratado como uma classificação binária, onde:
 
@@ -48,7 +48,7 @@ Valor < 0 → risco de defasagem
 
 Valor >= 0 → sem risco
 
-# 📊 Dados Utilizados
+## 📊 Dados Utilizados
 
 Arquivo principal:
 
@@ -63,7 +63,7 @@ PEDE2023
 
 PEDE2024
 
-## 🔹 Features de Entrada
+### 🔹 Features de Entrada
 
 As features utilizadas no modelo foram padronizadas para lidar com inconsistências entre abas:
 
@@ -87,8 +87,8 @@ Ordem variável das colunas
 
 Valores ausentes
 
-# ⚙️ Pipeline de Machine Learning
-## 🔹 Pré-processamento
+## ⚙️ Pipeline de Machine Learning
+### 🔹 Pré-processamento
 
 Padronização de nomes de colunas
 
@@ -98,13 +98,13 @@ Criação do target
 
 Tratamento de valores ausentes (imputação)
 
-## 🔹 Feature Engineering
+### 🔹 Feature Engineering
 
 Consolidação de colunas equivalentes
 
 Garantia de schema consistente
 
-## 🔹 Treinamento
+### 🔹 Treinamento
 
 Validação temporal:
 
@@ -124,26 +124,27 @@ F1-score
 
 ROC AUC
 
-## 🔹 Persistência
+### 🔹 Persistência
 
 Artefatos salvos:
-
+```
 artifacts/
 ├── model.pkl
 ├── scaler.pkl
 ├── imputer.pkl
 └── features_used.pkl
+```
 
-# 📡 API de Inferência
+## 📡 API de Inferência
 
 A solução expõe uma API FastAPI para consumo do modelo.
 
-## 🔹 Endpoint de predição
+### 🔹 Endpoint de predição
 
 POST /predict
 
 Exemplo de input:
-
+```
 {
   "IAA": 6.5,
   "IEG": 6.8,
@@ -156,17 +157,17 @@ Exemplo de input:
   "MATEMATICA": 6.9,
   "INGLES": 6.4
 }
-
+```
 
 Exemplo de resposta:
-
+```
 {
   "prediction": 0,
   "prediction_label": "Aluno não possui risco de defasagem",
   "probability": 0.27
 }
-
-# 🧪 Testes Unitários
+```
+## 🧪 Testes Unitários
 
 Foram implementados testes unitários cobrindo:
 
@@ -190,8 +191,8 @@ Execução:
 
 pytest
 
-# 📈 Monitoramento e Detecção de Drift
-## 🔹 Logging de Produção
+## 📈 Monitoramento e Detecção de Drift
+### 🔹 Logging de Produção
 
 Cada predição é registrada com:
 
@@ -207,7 +208,7 @@ Arquivo:
 
 data/predictions_log.csv
 
-## 🔹 Detecção de Drift
+### 🔹 Detecção de Drift
 
 Utilizado PSI (Population Stability Index)
 
@@ -229,11 +230,11 @@ Endpoint:
 
 GET /monitoring/drift
 
-# 📊 Painel Visual de Monitoramento
+## 📊 Painel Visual de Monitoramento
 
 Foi implementado um painel web simples, acessível via navegador, para acompanhamento visual do drift.
 
-## 📍 URL:
+### 📍 URL:
 
 /monitoring/dashboard
 
@@ -246,7 +247,7 @@ Valor do PSI
 
 Status com cores indicativas
 
-## 🏠 Página Inicial (README Web)
+### 🏠 Página Inicial (README Web)
 
 A aplicação disponibiliza uma página inicial (/) que funciona como um README interativo, contendo:
 
@@ -258,9 +259,9 @@ Endpoints disponíveis
 
 Acesso ao painel de drift
 
-# 🚀 Instalação e Execução da Aplicação
+## 🚀 Instalação e Execução da Aplicação
 
-## 🔹 Opção 1 – Execução Local (sem Docker)
+### 🔹 Opção 1 – Execução Local (sem Docker)
 
 #### Pré-requisitos
 - Python 3.10+
@@ -307,7 +308,7 @@ Acesse:
 
 ---
 
-## 🔹 Opção 2 – Execução com Docker (Recomendado)
+### 🔹 Opção 2 – Execução com Docker (Recomendado)
 
 #### Pré-requisitos
 - Docker
@@ -325,7 +326,8 @@ Acesse:
 
 ---
 
-# 🗂️ Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
+```
 datathon_passos_magicos/
 │
 ├── app/
@@ -375,8 +377,9 @@ datathon_passos_magicos/
 ├── generate_control_production_data.py
 ├── requirements.txt
 └── README.md
+```
 
-# 🧱 Stack Tecnológica Utilizada
+## 🧱 Stack Tecnológica Utilizada
 - Python 3.10+
 - Pandas, NumPy
 - Scikit-learn
@@ -388,7 +391,7 @@ datathon_passos_magicos/
 - OpenPyXL
 - Git
 
-# 🏁 Conclusão
+## 🏁 Conclusão
 
 O projeto atende integralmente aos requisitos do Datathon, entregando:
 
@@ -408,6 +411,6 @@ Containerização
 
 Além disso, incorpora práticas de MLOps, elevando a solução para um nível próximo ao de ambiente produtivo real.
 
-# 👨‍💻 Observação Final
+## 👨‍💻 Observação Final
 
 Este projeto foi desenvolvido para fins educacionais e analíticos, demonstrando a aplicação prática de Machine Learning, engenharia de dados e monitoramento de modelos.
