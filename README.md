@@ -270,7 +270,7 @@ Acesso ao painel de drift
 #### 1️⃣ Clone o repositório
 ```bash
 git clone <url-do-repositorio>
-cd datathon_passos_magicos_V2
+cd datathon_passos_magicos
 ```
 
 #### 2️⃣ Crie e ative o ambiente virtual
